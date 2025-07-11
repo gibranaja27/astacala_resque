@@ -52,43 +52,44 @@
 
         <!-- Main Content -->
         <div class="flex-grow p-6">
-            <h1 class="text-3xl font-bold mb-4 text-red-600 pt-10">Data Pengguna</h1>
+            <h1 class="text-3xl font-bold mb-4 text-red-600 pt-10">Data Admin</h1>
             <div class="overflow-x-auto">
                 <table class="min-w-full table-auto border-collapse">
                     <!-- Tabel Header -->
                     <thead class="bg-gray-200 text-gray-600">
                         <tr>
-                            <th class="px-4 py-2 border text-left">Username Pengguna</th>
+                            <th class="px-4 py-2 border text-left">Username Admin</th>
                             <th class="px-4 py-2 border text-left">Nama Lengkap</th>
                             <th class="px-4 py-2 border text-left">Tanggal Lahir</th>
                             <th class="px-4 py-2 border text-left">Tempat Lahir</th>
                             <th class="px-4 py-2 border text-left">No Handphone</th>
-                            <th class="px-4 py-2 border text-left">Password Pengguna</th>
+                            <th class="px-4 py-2 border text-left">No Aanggota</th>
+                            <th class="px-4 py-2 border text-left">Password Admin</th>
                             <th class="px-4 py-2 border text-left">Aksi</th> <!-- Kolom Aksi -->
                         </tr>
                     </thead>
 
                     <!-- Tabel Body -->
                     <tbody>
-                        @foreach ($data_pengguna as $penggun)
+                        @foreach ($data_admin as $admi)
                             <tr class="hover:bg-gray-100">
-                                <td class="px-4 py-2 border">{{ $penggun->username_akun_pengguna }}</td>
-                                <td class="px-4 py-2 border">{{ $penggun->nama_lengkap_pengguna }}</td>
-                                <td class="px-4 py-2 border">{{ $penggun->tanggal_lahir_pengguna }}</td>
-                                <td class="px-4 py-2 border">{{ $penggun->tempat_lahir_pengguna }}</td>
-                                <td class="px-4 py-2 border">{{ $penggun->no_handphone_pengguna }}</td>
-                                <td class="px-4 py-2 border">{{ $penggun->password_akun_pengguna }}</td>
+                                <td class="px-4 py-2 border">{{ $admi->username_akun_admin }}</td>
+                                <td class="px-4 py-2 border">{{ $admi->nama_lengkap_admin }}</td>
+                                <td class="px-4 py-2 border">{{ $admi->tanggal_lahir_admin }}</td>
+                                <td class="px-4 py-2 border">{{ $admi->tempat_lahir_admin }}</td>
+                                <td class="px-4 py-2 border">{{ $admi->no_handphone_admin }}</td>
+                                <td class="px-4 py-2 border">{{ $admi->no_anggota }}</td>
+                                <td class="px-4 py-2 border">{{ $admi->password_akun_admin }}</td>
                                 <td class="px-4 py-2 border text-center">
-                                    <a href="/Pengguna/{{ $penggun->id }}/ubahpenggun" onclick="return confirmUpdate()"
+                                    <a href="/edit_pengguna/{{ $admi->id }}" onclick="return confirmUpdate()"
                                         class="px-4 py-2 mb-2 bg-yellow-500 text-white rounded hover:bg-yellow-600 w-24 inline-block">Update</a>
-                                    <form action="{{ url('/hapus_pengguna/' . $penggun->id) }}" method="POST"
+                                    <form action="/hapus_pengguna/{{ $admi->id }}" method="POST"
                                         style="display:inline;">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" onclick="return confirmDelete()"
                                             class="px-4 py-2 mb-2 bg-red-500 text-white rounded hover:bg-red-600 w-24">Delete</button>
                                     </form>
-
                                 </td>
                             </tr>
                         @endforeach

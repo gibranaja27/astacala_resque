@@ -12,11 +12,10 @@
 <body class="bg-gray-100">
     <div class="flex h-screen">
         <!-- Sidebar -->
-        <div class="w-44 bg-gray-400 text-black flex flex-col font-semibold">
+        <div class="w-48 bg-gray-400 text-black flex flex-col font-semibold">
             <div class="p-4 text-center text-xl font-bold border-b border-white-500">
                 <div class="flex items-center space-x-2">
-                    <!-- Ikon Profil Font Awesome -->
-                    <i class="fas fa-user-circle text-7xl text-gray-600 ml-10 mt-10"></i>
+                     <img src="{{ asset('image/yayasan_astacala_logo.png') }}" alt="Logo Profil" class="w-20 h-20 rounded-full mx-auto mt-10">
                 </div>
                 <div class="mb-7 mt-5">
                     Admin
@@ -26,16 +25,18 @@
                 <ul>
                     <li>
                         <a href="/Home" class="block py-3 px-4 hover:bg-red-500 rounded transition duration-300">
+                            <i class="fas fa-home-alt mr-2"></i>
                             Home
                         </a>
                     </li>
                     <li>
-                        <a href="/Pelaporan" class="block py-3 px-4 hover:bg-red-500 rounded transition duration-300">
-                            Data Pelaporan
+                        <a href="/publikasi" class="block py-3 px-4 hover:bg-red-500 rounded transition duration-300">
+                            <i class="fas fa-file-alt mr-2"></i>
+                            Publikasi Bencana
                         </a>
                     </li>
                     <li>
-                        <a href="#data-pelaporan"
+                        <a href="{{ route('logout') }}"
                             class="block py-3 px-4 hover:bg-red-500 rounded transition duration-300 items-center">
                             <!-- Ikon Exit -->
                             <i class="fas fa-sign-out-alt mr-2"></i>
@@ -57,7 +58,6 @@
                     <!-- Tabel Header -->
                     <thead class="bg-gray-200 text-gray-600">
                         <tr>
-                            <th class="px-4 py-2 border text-left">NO</th>
                             <th class="px-4 py-2 border text-left">Username Admin</th>
                             <th class="px-4 py-2 border text-left">Nama Lengkap</th>
                             <th class="px-4 py-2 border text-left">Tanggal Lahir</th>
@@ -71,43 +71,28 @@
 
                     <!-- Tabel Body -->
                     <tbody>
-                        <tr class="hover:bg-gray-100">
-                            <td class="px-4 py-2 border">1</td>
-                            <td class="px-4 py-2 border">ucupsilalahi</td>
-                            <td class="px-4 py-2 border">Ucup Abdurrahman</td>
-                            <td class="px-4 py-2 border">04/05/2004</td>
-                            <td class="px-4 py-2 border">Jakarta</td>
-                            <td class="px-4 py-2 border">087428244743</td>
-                            <td class="px-4 py-2 border">A-196-KH</td>
-                            <td class="px-4 py-2 border">ucup123</td>
-                            <td class="px-4 py-2 border text-center"> <!-- Kolom Aksi -->
-                                <button
-                                    class="px-4 py-2 mb-2 bg-yellow-500 text-white rounded hover:bg-yellow-600 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-opacity-50 w-24">
-                                    <a href="/edit_Pelaporan">Update</a>
-                                </button>
-                                <button
-                                    class="px-4 py-2 mb-2 bg-red-500 text-white rounded hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 w-24">Delete</button>
-                            </td>
-                        </tr>
-
-                        <tr class="hover:bg-gray-100">
-                            <td class="px-4 py-2 border">2</td>
-                            <td class="px-4 py-2 border">ucupsilalahi</td>
-                            <td class="px-4 py-2 border">Ucup Abdurrahman</td>
-                            <td class="px-4 py-2 border">04/05/2004</td>
-                            <td class="px-4 py-2 border">Jakarta</td>
-                            <td class="px-4 py-2 border">087428244743</td>
-                            <td class="px-4 py-2 border">A-196-KH</td>
-                            <td class="px-4 py-2 border">ucup123</td>
-                            <td class="px-4 py-2 border text-center"> <!-- Kolom Aksi -->
-                                <button
-                                    class="px-4 py-2 mb-2 bg-yellow-500 text-white rounded hover:bg-yellow-600 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-opacity-50 w-24">
-                                    <a href="/edit_Pelaporan">Update</a>
-                                </button>
-                                <button
-                                    class="px-4 py-2 mb-2 bg-red-500 text-white rounded hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 w-24">Delete</button>
-                            </td>
-                        </tr>
+                        @foreach ($data_admin as $admi)
+                            <tr class="hover:bg-gray-100">
+                                <td class="px-4 py-2 border">{{ $admi->username_akun_admin }}</td>
+                                <td class="px-4 py-2 border">{{ $admi->nama_lengkap_admin }}</td>
+                                <td class="px-4 py-2 border">{{ $admi->tanggal_lahir_admin }}</td>
+                                <td class="px-4 py-2 border">{{ $admi->tempat_lahir_admin }}</td>
+                                <td class="px-4 py-2 border">{{ $admi->no_handphone_admin }}</td>
+                                <td class="px-4 py-2 border">{{ $admi->no_anggota }}</td>
+                                <td class="px-4 py-2 border">{{ $admi->password_akun_admin }}</td>
+                                <td class="px-4 py-2 border text-center">
+                                    <a href="/Admin/{{ $admi->id }}/ubahadmin" onclick="return confirmUpdate()"
+                                        class="px-4 py-2 mb-2 bg-yellow-500 text-white rounded hover:bg-yellow-600 w-24 inline-block">Update</a>
+                                    <form action="{{ url('/hapus_admin/' . $admi->id) }}" method="POST"
+                                        style="display:inline;">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" onclick="return confirmDelete()"
+                                            class="px-4 py-2 mb-2 bg-red-500 text-white rounded hover:bg-red-600 w-24">Delete</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>
@@ -116,5 +101,14 @@
         </div>
     </div>
 </body>
+<script>
+    function confirmUpdate() {
+        return confirm("Apakah Anda yakin ingin mengedit data pelaporan ini ?")
+    }
+
+    function confirmDelete() {
+        return confirm("Apakah Anda Ingin Menghapus Data Pelaporan Ini ?")
+    }
+</script>
 
 </html>

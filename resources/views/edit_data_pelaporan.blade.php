@@ -12,155 +12,129 @@
 <body class="bg-gray-100">
     <div class="flex h-screen">
         <!-- Sidebar -->
-        <div class="w-44 bg-gray-400 text-black flex flex-col font-semibold">
-          <div class="p-4 text-center text-xl font-bold border-b border-white-500">
-              <div class="flex items-center space-x-2">
-                  <!-- Ikon Profil Font Awesome -->
-                  <i class="fas fa-user-circle text-7xl text-gray-600 ml-10 mt-10"></i>
-              </div>
-              <div class="mb-7 mt-5">
-                  Admin
-              </div>
-          </div>
-          <nav class="flex-grow mt-4">
-              <ul>
-                  <li>
-                      <a href="/Home" class="block py-3 px-4 hover:bg-red-500 rounded transition duration-300">
-                          Home
-                      </a>
-                  </li>
-                  <li>
-                      <a href="/Pelaporan" class="block py-3 px-4 hover:bg-red-500 rounded transition duration-300">
-                          Data Pelaporan
-                      </a>
-                  </li>
-                  <li>
-                      <a href="#data-pelaporan"
-                          class="block py-3 px-4 hover:bg-red-500 rounded transition duration-300 items-center">
-                          <!-- Ikon Exit -->
-                          <i class="fas fa-sign-out-alt mr-2"></i>
-                          Keluar
-                      </a>
-                  </li>
-              </ul>
-          </nav>
-          <div class="p-4 border-t border-white text-center text-sm">
-              &copy; 2025 Astacala Resque
-          </div>
-      </div>
-
-        <!-- Main Content -->
-        <div class="flex-grow p-6">
-            <h1 class="text-3xl font-bold mb-4 text-red-600 pt-10">Edit Data Pelaporan</h1>
-            <div class="flex items-center justify-center min-h-screen bg-gray-100">
-                <div class="w-full max-w-4xl p-6 bg-white rounded-lg shadow-lg">
-                    <h2 class="text-2xl font-semibold text-gray-700 mb-6">Form Update Data</h2>
-                    <form action="#" method="POST" class="space-y-4">
-                        <!-- Nama Team Relawan -->
-                        <div>
-                            <label for="team_name" class="block text-sm font-medium text-gray-700">Nama Team
-                                Relawan</label>
-                            <input type="text" id="team_name" name="team_name"
-                                class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
-                                placeholder="Masukkan nama tim relawan">
-                        </div>
-
-                        <!-- Jumlah Personel -->
-                        <div>
-                            <label for="personnel_count" class="block text-sm font-medium text-gray-700">Jumlah
-                                Personel</label>
-                            <input type="number" id="personnel_count" name="personnel_count"
-                                class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
-                                placeholder="Masukkan jumlah personel">
-                        </div>
-
-                        <!-- No Telepon -->
-                        <div>
-                            <label for="phone_number" class="block text-sm font-medium text-gray-700">No Telepon</label>
-                            <input type="tel" id="phone_number" name="phone_number"
-                                class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
-                                placeholder="Masukkan no telepon">
-                        </div>
-
-                        <!-- Informasi Singkat Nama Bencana -->
-                        <div>
-                            <label for="disaster_info" class="block text-sm font-medium text-gray-700">Informasi Singkat
-                                Nama Bencana</label>
-                            <input type="text" id="disaster_info" name="disaster_info"
-                                class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
-                                placeholder="Masukkan informasi singkat bencana">
-                        </div>
-
-                        <!-- Lokasi Bencana -->
-                        <div>
-                            <label for="disaster_location" class="block text-sm font-medium text-gray-700">Lokasi
-                                Bencana</label>
-                            <input type="text" id="disaster_location" name="disaster_location"
-                                class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
-                                placeholder="Masukkan lokasi bencana">
-                        </div>
-
-                        <!-- Foto Lokasi Bencana -->
-                        <div>
-                            <label for="disaster_photo" class="block text-sm font-medium text-gray-700">Foto Lokasi
-                                Bencana</label>
-                            <input type="file" id="disaster_photo" name="disaster_photo"
-                                class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
-                        </div>
-
-                        <!-- Titik Lokasi Bencana -->
-                        <div>
-                            <label for="disaster_coordinates" class="block text-sm font-medium text-gray-700">Titik
-                                Lokasi Bencana</label>
-                            <input type="text" id="disaster_coordinates" name="disaster_coordinates"
-                                class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
-                                placeholder="Contoh: -7.12345, 112.67890">
-                        </div>
-
-                        <!-- Kondisi Lokasi Bencana -->
-                        <div>
-                            <label for="disaster_condition" class="block text-sm font-medium text-gray-700">Kondisi
-                                Lokasi Bencana</label>
-                            <select id="disaster_condition" name="disaster_condition"
-                                class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
-                                <option value="Parah">Parah</option>
-                                <option value="Sedang">Sedang</option>
-                                <option value="Ringan">Ringan</option>
-                            </select>
-                        </div>
-
-                        <!-- Jumlah Korban -->
-                        <div>
-                            <label for="victim_count" class="block text-sm font-medium text-gray-700">Jumlah
-                                Korban</label>
-                            <input type="text" id="victim_count" name="victim_count"
-                                class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
-                                placeholder="Masukkan jumlah korban">
-                        </div>
-
-                        <!-- Deskripsi Terkait Data Lainnya -->
-                        <div>
-                            <label for="description" class="block text-sm font-medium text-gray-700">Deskripsi Terkait
-                                Data Lainnya</label>
-                            <textarea id="description" name="description" rows="4"
-                                class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
-                                placeholder="Masukkan deskripsi terkait data lainnya"></textarea>
-                        </div>
-
-                        <!-- Tombol Update -->
-                        <div class="text-right">
-                            <button type="submit"
-                                class="px-6 py-2 bg-red-500 text-white rounded-lg shadow-md hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
-                                Update Data
-                            </button>
-                        </div>
-                    </form>
+        <div class="w-48 bg-gray-400 text-black flex flex-col font-semibold">
+            <div class="p-4 text-center text-xl font-bold border-b border-white-500">
+                <div class="flex items-center space-x-2">
+                     <img src="{{ asset('image/yayasan_astacala_logo.png') }}" alt="Logo Profil" class="w-20 h-20 rounded-full mx-auto mt-10">
+                </div>
+                <div class="mb-7 mt-5">
+                    Admin
                 </div>
             </div>
-
-
-
+            <nav class="flex-grow mt-4">
+                <ul>
+                    <li>
+                        <a href="/Home" class="block py-3 px-4 hover:bg-red-500 rounded transition duration-300">
+                            <i class="fas fa-home-alt mr-2"></i>
+                            Home
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/publikasi" class="block py-3 px-4 hover:bg-red-500 rounded transition duration-300">
+                            <i class="fas fa-file-alt mr-2"></i>
+                            Publikasi Bencana
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('logout') }}"
+                            class="block py-3 px-4 hover:bg-red-500 rounded transition duration-300 items-center">
+                            <!-- Ikon Exit -->
+                            <i class="fas fa-sign-out-alt mr-2"></i>
+                            Keluar
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="p-4 border-t border-white text-center text-sm">
+                &copy; 2025 Astacala Resque
+            </div>
         </div>
+
+        <!-- Main Content -->
+        <div class="container mx-auto">
+            <h1 class="text-2xl font-bold mb-4">Edit Pelaporan</h1>
+
+            <form action="{{ route('pelaporan.update', $data->id) }}" method="POST" enctype="multipart/form-data">
+                @csrf
+                @method('PUT')
+
+                <div class="mb-4">
+                    <label>Nama Tim</label>
+                    <input type="text" name="nama_team_pelapor" value="{{ $data->nama_team_pelapor }}"
+                        class="w-full p-2 border">
+                </div>
+
+                <div class="mb-4">
+                    <label>Jumlah Personel</label>
+                    <input type="number" name="jumlah_personel" value="{{ $data->jumlah_personel }}"
+                        class="w-full p-2 border">
+                </div>
+
+                <div class="mb-4">
+                    <label>No Handphone</label>
+                    <input type="text" name="no_handphone" value="{{ $data->no_handphone }}"
+                        class="w-full p-2 border">
+                </div>
+
+                <div class="mb-4">
+                    <label>Informasi Singkat</label>
+                    <input type="text" name="informasi_singkat_bencana"
+                        value="{{ $data->informasi_singkat_bencana }}" class="w-full p-2 border">
+                </div>
+
+                <div class="mb-4">
+                    <label>Lokasi</label>
+                    <input type="text" name="lokasi_bencana" value="{{ $data->lokasi_bencana }}"
+                        class="w-full p-2 border">
+                </div>
+
+                <div class="mb-4">
+                    <label>Koordinat</label>
+                    <input type="text" name="titik_kordinat_lokasi_bencana"
+                        value="{{ $data->titik_kordinat_lokasi_bencana }}" class="w-full p-2 border">
+                </div>
+
+                <div class="mb-4">
+                    <label>Skala Bencana</label>
+                    <select name="skala_bencana" class="w-full p-2 border">
+                        <option value="kecil" {{ $data->skala_bencana == 'kecil' ? 'selected' : '' }}>Kecil</option>
+                        <option value="sedang" {{ $data->skala_bencana == 'sedang' ? 'selected' : '' }}>Sedang</option>
+                        <option value="besar" {{ $data->skala_bencana == 'besar' ? 'selected' : '' }}>Besar</option>
+                    </select>
+                </div>
+
+                <div class="mb-4">
+                    <label>Jumlah Korban</label>
+                    <input type="number" name="jumlah_korban" value="{{ $data->jumlah_korban }}"
+                        class="w-full p-2 border">
+                </div>
+
+                <div class="mb-4">
+                    <label>Deskripsi</label>
+                    <textarea name="deskripsi_terkait_data_lainya" class="w-full p-2 border">{{ $data->deskripsi_terkait_data_lainya }}</textarea>
+                </div>
+
+                <div class="mb-4">
+                    <label>Foto Lokasi</label>
+                    @if ($data->foto_lokasi_bencana)
+                        <img src="{{ asset('storage/' . $data->foto_lokasi_bencana) }}" width="100">
+                    @endif
+                    <input type="file" name="foto_lokasi_bencana" class="w-full">
+                </div>
+
+                <div class="mb-4">
+                    <label>Bukti Surat Tugas</label>
+                    @if ($data->bukti_surat_perintah_tugas)
+                        <a href="{{ asset('storage/' . $data->bukti_surat_perintah_tugas) }}" target="_blank">Lihat
+                            File</a>
+                    @endif
+                    <input type="file" name="bukti_surat_perintah_tugas" class="w-full">
+                </div>
+
+                <button type="submit" class="bg-blue-500 text-white px-4 py-2">Simpan</button>
+            </form>
+        </div>
+
     </div>
 </body>
 

@@ -7,16 +7,17 @@
     <title>Sidebar Navigation</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 </head>
 
 <body class="bg-gray-100">
     <div class="flex h-screen">
         <!-- Sidebar -->
-        <div class="w-44 bg-gray-400 text-black flex flex-col font-semibold">
+        <div class="w-60 bg-gray-400 text-black flex flex-col font-semibold">
             <div class="p-4 text-center text-xl font-bold border-b border-white-500">
                 <div class="flex items-center space-x-2">
-                    <!-- Ikon Profil Font Awesome -->
-                    <i class="fas fa-user-circle text-7xl text-gray-600 ml-10 mt-10"></i>
+                     <img src="{{ asset('image/yayasan_astacala_logo.png') }}" alt="Logo Profil" class="w-20 h-20 rounded-full mx-auto mt-10">
                 </div>
                 <div class="mb-7 mt-5">
                     Admin
@@ -26,16 +27,18 @@
                 <ul>
                     <li>
                         <a href="/Home" class="block py-3 px-4 hover:bg-red-500 rounded transition duration-300">
+                            <i class="fas fa-home-alt mr-2"></i>
                             Home
                         </a>
                     </li>
                     <li>
-                        <a href="/Pelaporan" class="block py-3 px-4 hover:bg-red-500 rounded transition duration-300">
-                            Data Pelaporan
+                        <a href="/publikasi" class="block py-3 px-4 hover:bg-red-500 rounded transition duration-300">
+                            <i class="fas fa-file-alt mr-2"></i>
+                            Publikasi Bencana
                         </a>
                     </li>
                     <li>
-                        <a href="#data-pelaporan"
+                        <a href="{{ route('logout') }}"
                             class="block py-3 px-4 hover:bg-red-500 rounded transition duration-300 items-center">
                             <!-- Ikon Exit -->
                             <i class="fas fa-sign-out-alt mr-2"></i>
@@ -51,81 +54,127 @@
 
         <!-- Main Content -->
         <div class="flex-grow p-6">
-            <h1 class="text-3xl font-bold mb-4 text-red-600 pt-10">Data Pelaporan</h1>
-            <div class="overflow-x-auto">
-                <table class="min-w-full table-auto border-collapse">
-                  <!-- Tabel Header -->
-                  <thead class="bg-gray-200 text-gray-600">
+            <h1 class="text-2xl font-bold mb-4">Data Pelaporan</h1>
+
+            <table class="min-w-full bg-white border border-gray-300">
+                <thead>
                     <tr>
-                      <th class="px-4 py-2 border text-left">NO</th>
-                      <th class="px-4 py-2 border text-left">Nama Team Relawan</th>
-                      <th class="px-4 py-2 border text-left">Jumlah Personel</th>
-                      <th class="px-4 py-2 border text-left">No Telepon</th>
-                      <th class="px-4 py-2 border text-left">Informasi Singkat Nama Bencana</th>
-                      <th class="px-4 py-2 border text-left">Lokasi Bencana</th>
-                      <th class="px-4 py-2 border text-left">Foto Lokasi Bencana</th>
-                      <th class="px-4 py-2 border text-left">Titik Lokasi Bencana</th>
-                      <th class="px-4 py-2 border text-left">Kondisi Lokasi Bencana</th>
-                      <th class="px-4 py-2 border text-left">Jumlah Korban</th>
-                      <th class="px-4 py-2 border text-left">Deskripsi Terkait Data Lainnya</th>
-                      <th class="px-4 py-2 border text-left">Aksi</th> <!-- Kolom Aksi -->
+                        <th class="border px-4 py-2">Username Pengguna</th>
+                        <th class="border px-4 py-2">Nama Tim</th>
+                        <th class="border px-4 py-2">Jumlah Personel</th>
+                        <th class="border px-4 py-2">No HP</th>
+                        <th class="border px-4 py-2">Informasi Singkat</th>
+                        <th class="border px-4 py-2">Lokasi</th>
+                        <th class="border px-4 py-2">Koordinat</th>
+                        <th class="border px-4 py-2">Skala</th>
+                        <th class="border px-4 py-2">Jumlah Korban</th>
+                        <th class="border px-4 py-2">Deskripsi</th>
+                        <th class="border px-4 py-2">Foto Lokasi</th>
+                        <th class="border px-4 py-2">Bukti Tugas</th>
+                        <th class="border px-4 py-2">Aksi</th>
                     </tr>
-                  </thead>
-              
-                  <!-- Tabel Body -->
-                  <tbody>
-                    <tr class="hover:bg-gray-100">
-                      <td class="px-4 py-2 border">1</td>
-                      <td class="px-4 py-2 border">Tim A</td>
-                      <td class="px-4 py-2 border">20</td>
-                      <td class="px-4 py-2 border">081234567890</td>
-                      <td class="px-4 py-2 border">Banjir Bandang</td>
-                      <td class="px-4 py-2 border">Desa ABC</td>
-                      <td class="px-4 py-2 border">
-                        <img src="path_to_image.jpg" alt="Foto Lokasi" class="w-16 h-16 object-cover rounded-md">
-                      </td>
-                      <td class="px-4 py-2 border">-7.12345, 112.67890</td>
-                      <td class="px-4 py-2 border">Parah</td>
-                      <td class="px-4 py-2 border">15</td>
-                      <td class="px-4 py-2 border">Bencana alam ini menyebabkan banyak kerusakan di desa ABC, termasuk rumah dan infrastruktur.</td>
-                      <td class="px-4 py-2 border text-center"> <!-- Kolom Aksi -->
-                        <button class="px-4 py-2 mb-2 bg-blue-500 text-white rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 w-24">Upload</button>
-                        <button class="px-4 py-2 mb-2 bg-yellow-500 text-white rounded hover:bg-yellow-600 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-opacity-50 w-24">
-                            <a href="/edit_Pelaporan">Update</a>
-                        </button>
-                        <button class="px-4 py-2 mb-2 bg-red-500 text-white rounded hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 w-24">Delete</button>
-                      </td>
-                    </tr>
-              
-                    <tr class="hover:bg-gray-100">
-                      <td class="px-4 py-2 border">2</td>
-                      <td class="px-4 py-2 border">Tim B</td>
-                      <td class="px-4 py-2 border">15</td>
-                      <td class="px-4 py-2 border">082345678901</td>
-                      <td class="px-4 py-2 border">Gempa Bumi</td>
-                      <td class="px-4 py-2 border">Kota XYZ</td>
-                      <td class="px-4 py-2 border">
-                        <img src="path_to_image.jpg" alt="Foto Lokasi" class="w-16 h-16 object-cover rounded-md">
-                      </td>
-                      <td class="px-4 py-2 border">-8.23456, 112.34567</td>
-                      <td class="px-4 py-2 border">Parah</td>
-                      <td class="px-4 py-2 border">30</td>
-                      <td class="px-4 py-2 border">Gempa bumi ini merusak banyak bangunan di kota XYZ dan menyebabkan banyak korban jiwa.</td>
-                      <td class="px-4 py-2 border text-center">
-                        <button class="px-4 py-2 pb-2 mb-2 bg-blue-500 text-white rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 w-24">Upload</button>
-                        <button class="px-4 py-2 pb-2 mb-2 bg-yellow-500 text-white rounded hover:bg-yellow-600 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-opacity-50 w-24">
-                            <a href="/edit_Pelaporan">Update</a>
-                        </button>
-                        <button class="px-4 py-2 pb-2 mb-2 bg-red-500 text-white rounded hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 w-24">Delete</button>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-              
+                </thead>
+                <tbody>
+                    @foreach ($data as $row)
+                        <tr>
+                            <td class="border px-4 py-2">
+                                {{ $row->pengguna->username_akun_pengguna ?? 'Tidak ada username' }}</td>
+                            <td class="border px-4 py-2">{{ $row->nama_team_pelapor }}</td>
+                            <td class="border px-4 py-2">{{ $row->jumlah_personel }}</td>
+                            <td class="border px-4 py-2">{{ $row->no_handphone }}</td>
+                            <td class="border px-4 py-2">{{ $row->informasi_singkat_bencana }}</td>
+                            <td class="border px-4 py-2">{{ $row->lokasi_bencana }}</td>
+                            <td class="border px-4 py-2">
+                                {{ $row->titik_kordinat_lokasi_bencana }}
+                                <button onclick="showMap('{{ $row->titik_kordinat_lokasi_bencana }}')"
+                                    class="ml-2 text-blue-500">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </td>
+                            <td class="border px-4 py-2">{{ $row->skala_bencana }}</td>
+                            <td class="border px-4 py-2">{{ $row->jumlah_korban }}</td>
+                            <td class="border px-4 py-2">{{ $row->deskripsi_terkait_data_lainya }}</td>
+                            <td class="border px-4 py-2">
+                                @if ($row->foto_lokasi_bencana)
+                                    <img src="{{ asset('storage/' . $row->foto_lokasi_bencana) }}" width="100">
+                                @else
+                                    Tidak ada foto
+                                @endif
+                            </td>
+                            <td class="border px-4 py-2">
+                                @if ($row->bukti_surat_perintah_tugas)
+                                    <a href="{{ asset('storage/' . $row->bukti_surat_perintah_tugas) }}"
+                                        target="_blank">Lihat File</a>
+                                @else
+                                    Tidak ada file
+                                @endif
+                            </td>
+                            <td class="border px-4 py-2">
+                                <form action="{{ route('pelaporan.destroy', $row->id) }}" method="POST"
+                                    class="inline">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="text-red-600"
+                                        onclick="return confirm('Hapus data ini?')">Delete</button>
+                                </form>
+                                <button type="button" onclick="verifikasiData({{ $row->id }})"
+                                    class="text-green-600 ml-2">Verifikasi</button>
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+
 
         </div>
     </div>
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script>
+        function verifikasiData(id) {
+            Swal.fire({
+                title: 'Verifikasi Pelaporan',
+                text: "Apakah data pelaporan ini DITERIMA atau DITOLAK?",
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonText: 'DITERIMA',
+                cancelButtonText: 'DITOLAK',
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = "/pelaporan/verifikasi/" + id + "?status=DITERIMA";
+                } else if (result.dismiss === Swal.DismissReason.cancel) {
+                    window.location.href = "/pelaporan/verifikasi/" + id + "?status=DITOLAK";
+                }
+            });
+        }
+
+        function showMap(kordinat) {
+            if (!kordinat || !kordinat.includes(',')) {
+                Swal.fire('Error', 'Titik koordinat bencana tidak tersedia', 'error');
+                return;
+            }
+
+            const [lat, lng] = kordinat.split(',').map(x => parseFloat(x.trim()));
+
+            Swal.fire({
+                title: 'Lokasi Peta',
+                html: '<div id="map" style="height:400px;"></div>',
+                width: 600,
+                didOpen: () => {
+                    const map = L.map('map').setView([lat, lng], 13);
+
+                    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                        attribution: '© OpenStreetMap contributors'
+                    }).addTo(map);
+
+                    L.marker([lat, lng]).addTo(map)
+                        .bindPopup('Lokasi Bencana').openPopup();
+                }
+            });
+        }
+    </script>
 </body>
+
 
 </html>

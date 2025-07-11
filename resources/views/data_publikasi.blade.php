@@ -12,7 +12,7 @@
 <body class="bg-gray-100">
     <div class="flex h-screen">
         <!-- Sidebar -->
-        <div class="w-48 bg-gray-400 text-black flex flex-col font-semibold">
+        <div class="w-64 bg-gray-400 text-black flex flex-col font-semibold">
             <div class="p-4 text-center text-xl font-bold border-b border-white-500">
                 <div class="flex items-center space-x-2">
                      <img src="{{ asset('image/yayasan_astacala_logo.png') }}" alt="Logo Profil" class="w-20 h-20 rounded-full mx-auto mt-10">
@@ -52,43 +52,59 @@
 
         <!-- Main Content -->
         <div class="flex-grow p-6">
-            <h1 class="text-3xl font-bold mb-4 text-red-600 pt-10">Data Pengguna</h1>
+            <h1 class="text-3xl font-bold mb-4 text-red-600 pt-10">Data Bencana</h1>
             <div class="overflow-x-auto">
+                <div>
+                    <a href="{{ route('berita.create') }}">Tambah Data</a>
+                </div>
                 <table class="min-w-full table-auto border-collapse">
                     <!-- Tabel Header -->
                     <thead class="bg-gray-200 text-gray-600">
                         <tr>
-                            <th class="px-4 py-2 border text-left">Username Pengguna</th>
-                            <th class="px-4 py-2 border text-left">Nama Lengkap</th>
-                            <th class="px-4 py-2 border text-left">Tanggal Lahir</th>
-                            <th class="px-4 py-2 border text-left">Tempat Lahir</th>
-                            <th class="px-4 py-2 border text-left">No Handphone</th>
-                            <th class="px-4 py-2 border text-left">Password Pengguna</th>
-                            <th class="px-4 py-2 border text-left">Aksi</th> <!-- Kolom Aksi -->
+                            <th class="px-4 py-2 border text-left">Judul Singkat Nama Bencana</th>
+                            <th class="px-4 py-2 border text-left">Lokasi Bencana</th>
+                            <th class="px-4 py-2 border text-left">Titik Lokasi Bencana</th>
+                            <th class="px-4 py-2 border text-left">Skala Bencana</th>
+                            <th class="px-4 py-2 border text-left">Deskripsi Bencana</th>
+                            <th class="px-4 py-2 border text-left">Foto Bencana</th>
+                            <th class="px-4 py-2 border text-left">Dibuat Oleh Admin</th>
+                            <th class="px-4 py-2 border text-left">Aksi</th>
                         </tr>
                     </thead>
 
                     <!-- Tabel Body -->
                     <tbody>
-                        @foreach ($data_pengguna as $penggun)
+                        @foreach ($data as $row)
                             <tr class="hover:bg-gray-100">
-                                <td class="px-4 py-2 border">{{ $penggun->username_akun_pengguna }}</td>
-                                <td class="px-4 py-2 border">{{ $penggun->nama_lengkap_pengguna }}</td>
-                                <td class="px-4 py-2 border">{{ $penggun->tanggal_lahir_pengguna }}</td>
-                                <td class="px-4 py-2 border">{{ $penggun->tempat_lahir_pengguna }}</td>
-                                <td class="px-4 py-2 border">{{ $penggun->no_handphone_pengguna }}</td>
-                                <td class="px-4 py-2 border">{{ $penggun->password_akun_pengguna }}</td>
-                                <td class="px-4 py-2 border text-center">
-                                    <a href="/Pengguna/{{ $penggun->id }}/ubahpenggun" onclick="return confirmUpdate()"
-                                        class="px-4 py-2 mb-2 bg-yellow-500 text-white rounded hover:bg-yellow-600 w-24 inline-block">Update</a>
-                                    <form action="{{ url('/hapus_pengguna/' . $penggun->id) }}" method="POST"
+                                <td class="px-4 py-2 border">{{ $row->pblk_judul_bencana }}</td>
+                                <td class="px-4 py-2 border">{{ $row->pblk_lokasi_bencana }}</td>
+                                <td class="px-4 py-2 border">{{ $row->pblk_titik_kordinat_bencana }}</td>
+                                <td class="px-4 py-2 border">{{ $row->pblk_skala_bencana }}</td>
+                                <td class="px-4 py-2 border">{{ $row->deskripsi_umum }}</td>
+                                <td>
+                                    @if ($row->pblk_foto_bencana)
+                                        <img src="{{ asset('storage/' . $row->pblk_foto_bencana) }}" width="100">
+                                    @else
+                                        <span>Tidak ada foto</span>
+                                    @endif
+                                </td>
+                                <td class="px-4 py-2 border">{{ $row->dibuat_oleh_admin_id }}</td>
+                                <td>
+                                    <a href="{{ route('berita.edit', $row->id) }}"
+                                        class="px-4 py-2 mb-2 bg-yellow-500 text-white rounded hover:bg-yellow-600 w-24 inline-block">Edit</a>
+                                    <form action="{{ route('berita.destroy', $row->id) }}" method="POST"
+                                        onsubmit="return confirm('Apakah Anda yakin ingin menghapus data ini?')"
                                         style="display:inline;">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" onclick="return confirmDelete()"
-                                            class="px-4 py-2 mb-2 bg-red-500 text-white rounded hover:bg-red-600 w-24">Delete</button>
+                                        <button type="submit" class="btn btn-danger btn-sm">Delete</button>
                                     </form>
-
+                                    <form action="{{ route('berita.publish', $row->id) }}" method="POST"
+                                        style="display:inline;">
+                                        @csrf
+                                        @method('POST')
+                                        <button type="submit" class="btn btn-success btn-sm">Publish</button>
+                                    </form>
                                 </td>
                             </tr>
                         @endforeach
@@ -100,14 +116,5 @@
         </div>
     </div>
 </body>
-<script>
-    function confirmUpdate() {
-        return confirm("Apakah Anda yakin ingin mengedit data pelaporan ini ?")
-    }
-
-    function confirmDelete() {
-        return confirm("Apakah Anda Ingin Menghapus Data Pelaporan Ini ?")
-    }
-</script>
 
 </html>
