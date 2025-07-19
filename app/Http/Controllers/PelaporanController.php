@@ -15,7 +15,6 @@ class PelaporanController extends Controller
         return view('data_pelaporan', compact('data'));
     }
 
-    // Tambah data pelaporan baru (STORE)
     public function store(Request $request)
     {
         $validated = $request->validate([

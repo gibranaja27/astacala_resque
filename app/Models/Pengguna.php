@@ -1,14 +1,16 @@
 <?php
 
-// app/Models/Pengguna.php
-
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable; // WAJIB
+use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Notifications\Notifiable;
 
-class Pengguna extends Model
+class Pengguna extends Authenticatable
 {
-    protected $table = 'penggunas'; // nama tabel di database
+    use HasApiTokens, Notifiable;
+
+    protected $table = 'penggunas';
 
     protected $fillable = [
         'username_akun_pengguna',
@@ -17,7 +19,10 @@ class Pengguna extends Model
         'tanggal_lahir_pengguna',
         'tempat_lahir_pengguna',
         'no_handphone_pengguna',
-        // Tambahkan kolom lain jika ada
+    ];
+
+    protected $hidden = [
+        'password_akun_pengguna',
     ];
 
     public function pelaporans()

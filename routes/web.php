@@ -9,6 +9,8 @@ use App\Http\Controllers\AuthAdminController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Middleware\AdminAuth;
 use App\Http\Controllers\ProfileAdminController;
+use App\Http\Controllers\AuthRelawanController;
+
 
 
 Route::get('/', function () {
@@ -65,6 +67,9 @@ Route::put('/Pengguna/{id}', [PenggunaController::class, 'ubahpeng']);
 // menghapus data pengguna
 Route::delete('/hapus_pengguna/{id}', [PenggunaController::class, 'hapus']);
 
+Route::middleware('api')
+    ->prefix('api')
+    ->group(base_path('routes/api.php'));
 
 
 // membaca data publikasi
@@ -102,7 +107,12 @@ Route::get('/register', [AuthAdminController::class, 'showRegisterForm'])->name(
 Route::post('/register', [AuthAdminController::class, 'register'])->name('register');
 Route::get('/logout', [AuthAdminController::class, 'logout'])->name('logout');
 
+//route halaman akun profil admin
 Route::get('/profil-admin', [ProfileAdminController::class, 'show'])->name('profil.admin')->middleware(AdminAuth::class);
+// Tampilkan form edit profil admin
+Route::get('/profil-admin/edit', [ProfileAdminController::class, 'edit'])->name('profil.admin.edit')->middleware(AdminAuth::class);
+// Simpan perubahan data profil admin
+Route::put('/profil-admin/update', [ProfileAdminController::class, 'update'])->name('profil.admin.update')->middleware(AdminAuth::class);
 
 // === PROTECTED ===
 Route::get('/dashboard', function () {

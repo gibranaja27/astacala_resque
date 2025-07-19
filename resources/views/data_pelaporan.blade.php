@@ -17,7 +17,8 @@
         <div class="w-60 bg-gray-400 text-black flex flex-col font-semibold">
             <div class="p-4 text-center text-xl font-bold border-b border-white-500">
                 <div class="flex items-center space-x-2">
-                     <img src="{{ asset('image/yayasan_astacala_logo.png') }}" alt="Logo Profil" class="w-20 h-20 rounded-full mx-auto mt-10">
+                    <img src="{{ asset('image/yayasan_astacala_logo.png') }}" alt="Logo Profil"
+                        class="w-20 h-20 rounded-full mx-auto mt-10">
                 </div>
                 <div class="mb-7 mt-5">
                     Admin
@@ -54,76 +55,85 @@
 
         <!-- Main Content -->
         <div class="flex-grow p-6">
-            <h1 class="text-2xl font-bold mb-4">Data Pelaporan</h1>
+            <h1 class="text-4xl font-bold text-center font-sansz mt-5">Data Pelaporan</h1>
 
-            <table class="min-w-full bg-white border border-gray-300">
-                <thead>
-                    <tr>
-                        <th class="border px-4 py-2">Username Pengguna</th>
-                        <th class="border px-4 py-2">Nama Tim</th>
-                        <th class="border px-4 py-2">Jumlah Personel</th>
-                        <th class="border px-4 py-2">No HP</th>
-                        <th class="border px-4 py-2">Informasi Singkat</th>
-                        <th class="border px-4 py-2">Lokasi</th>
-                        <th class="border px-4 py-2">Koordinat</th>
-                        <th class="border px-4 py-2">Skala</th>
-                        <th class="border px-4 py-2">Jumlah Korban</th>
-                        <th class="border px-4 py-2">Deskripsi</th>
-                        <th class="border px-4 py-2">Foto Lokasi</th>
-                        <th class="border px-4 py-2">Bukti Tugas</th>
-                        <th class="border px-4 py-2">Aksi</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($data as $row)
+            <div class="overflow-x-auto rounded-lg shadow mt-16">
+                <table class="min-w-full bg-white border border-gray-300 text-sm text-center">
+                    <thead class="bg-gray-100">
                         <tr>
-                            <td class="border px-4 py-2">
-                                {{ $row->pengguna->username_akun_pengguna ?? 'Tidak ada username' }}</td>
-                            <td class="border px-4 py-2">{{ $row->nama_team_pelapor }}</td>
-                            <td class="border px-4 py-2">{{ $row->jumlah_personel }}</td>
-                            <td class="border px-4 py-2">{{ $row->no_handphone }}</td>
-                            <td class="border px-4 py-2">{{ $row->informasi_singkat_bencana }}</td>
-                            <td class="border px-4 py-2">{{ $row->lokasi_bencana }}</td>
-                            <td class="border px-4 py-2">
-                                {{ $row->titik_kordinat_lokasi_bencana }}
-                                <button onclick="showMap('{{ $row->titik_kordinat_lokasi_bencana }}')"
-                                    class="ml-2 text-blue-500">
-                                    <i class="fas fa-eye"></i>
-                                </button>
-                            </td>
-                            <td class="border px-4 py-2">{{ $row->skala_bencana }}</td>
-                            <td class="border px-4 py-2">{{ $row->jumlah_korban }}</td>
-                            <td class="border px-4 py-2">{{ $row->deskripsi_terkait_data_lainya }}</td>
-                            <td class="border px-4 py-2">
-                                @if ($row->foto_lokasi_bencana)
-                                    <img src="{{ asset('storage/' . $row->foto_lokasi_bencana) }}" width="100">
-                                @else
-                                    Tidak ada foto
-                                @endif
-                            </td>
-                            <td class="border px-4 py-2">
-                                @if ($row->bukti_surat_perintah_tugas)
-                                    <a href="{{ asset('storage/' . $row->bukti_surat_perintah_tugas) }}"
-                                        target="_blank">Lihat File</a>
-                                @else
-                                    Tidak ada file
-                                @endif
-                            </td>
-                            <td class="border px-4 py-2">
-                                <form action="{{ route('pelaporan.destroy', $row->id) }}" method="POST"
-                                    class="inline">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="text-red-600"
-                                        onclick="return confirm('Hapus data ini?')">Delete</button>
-                                </form>
-                                <button type="button" onclick="verifikasiData({{ $row->id }})"
-                                    class="text-green-600 ml-2">Verifikasi</button>
-                            </td>
+                            <th class="px-4 py-3 border">Username Pengguna</th>
+                            <th class="px-4 py-3 border">Nama Tim</th>
+                            <th class="px-4 py-3 border">Jumlah Personel</th>
+                            <th class="px-4 py-3 border">No HP</th>
+                            <th class="px-4 py-3 border">Informasi Singkat</th>
+                            <th class="px-4 py-3 border">Lokasi</th>
+                            <th class="px-4 py-3 border">Koordinat</th>
+                            <th class="px-4 py-3 border">Skala</th>
+                            <th class="px-4 py-3 border">Jumlah Korban</th>
+                            <th class="px-4 py-3 border">Deskripsi</th>
+                            <th class="px-4 py-3 border">Foto Lokasi</th>
+                            <th class="px-4 py-3 border">Bukti Tugas</th>
+                            <th class="px-4 py-3 border">Aksi</th>
                         </tr>
-                    @endforeach
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody class="divide-y divide-gray-200">
+                        @foreach ($data as $row)
+                            <tr class="hover:bg-gray-100">
+                                <td class="px-4 py-3">
+                                    {{ $row->pengguna->username_akun_pengguna ?? 'Tidak ada username' }}</td>
+                                <td class="px-4 py-3">{{ $row->nama_team_pelapor }}</td>
+                                <td class="px-4 py-3">{{ $row->jumlah_personel }}</td>
+                                <td class="px-4 py-3">{{ $row->no_handphone }}</td>
+                                <td class="px-4 py-3">{{ $row->informasi_singkat_bencana }}</td>
+                                <td class="px-4 py-3">{{ $row->lokasi_bencana }}</td>
+                                <td class="px-4 py-3">
+                                    {{ $row->titik_kordinat_lokasi_bencana }}
+                                    <button onclick="showMap('{{ $row->titik_kordinat_lokasi_bencana }}')"
+                                        class="ml-2 text-blue-600 hover:text-blue-800">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                </td>
+                                <td class="px-4 py-3">{{ $row->skala_bencana }}</td>
+                                <td class="px-4 py-3">{{ $row->jumlah_korban }}</td>
+                                <td class="px-4 py-3">{{ $row->deskripsi_terkait_data_lainya }}</td>
+                                <td class="px-4 py-3">
+                                    @if ($row->foto_lokasi_bencana)
+                                        <img src="{{ asset('storage/' . $row->foto_lokasi_bencana) }}"
+                                            alt="Foto Lokasi" class="w-24 h-auto rounded shadow">
+                                    @else
+                                        <span class="text-gray-500">Tidak ada foto</span>
+                                    @endif
+                                </td>
+                                <td class="px-4 py-3">
+                                    @if ($row->bukti_surat_perintah_tugas)
+                                        <a href="{{ asset('storage/' . $row->bukti_surat_perintah_tugas) }}"
+                                            target="_blank" class="text-blue-600 underline hover:text-blue-800">Lihat
+                                            File</a>
+                                    @else
+                                        <span class="text-gray-500">Tidak ada file</span>
+                                    @endif
+                                </td>
+                                <td class="px-4 py-3 space-x-2">
+                                    <form action="{{ route('pelaporan.destroy', $row->id) }}" method="POST"
+                                        class="inline">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" onclick="return confirm('Hapus data ini?')"
+                                            class="px-6 py-1 bg-red-500 text-white rounded hover:bg-red-600">
+                                            Delete
+                                        </button>
+                                    </form>
+                                    <button type="button" onclick="verifikasiData({{ $row->id }})"
+                                        class="px-5 py-1 mt-6 bg-green-500 text-white rounded hover:bg-green-600">
+                                        Verifikasi
+                                    </button>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+
 
 
         </div>
