@@ -16,43 +16,77 @@
     @endphp
 
     <div class="flex h-screen">
+        
         <!-- Sidebar -->
-        <div class="w-48 bg-gray-400 text-black flex flex-col font-semibold">
-            <div class="p-4 text-center text-xl font-bold border-b border-white-500">
-                <div class="flex items-center space-x-2">
-                     <img src="{{ asset('image/yayasan_astacala_logo.png') }}" alt="Logo Profil" class="w-20 h-20 rounded-full mx-auto mt-10">
-                </div>
-                <div class="mb-7 mt-5">
-                    Admin
-                </div>
+        <div class="w-48 bg-white text-black flex flex-col h-screen border-r shadow-md font-semibold"
+            x-data="{ openPublikasi: false }">
+            <!-- Logo & Profil -->
+            <div class="p-4 text-center border-b">
+                <img src="{{ asset('image/yayasan_astacala_logo.png') }}" alt="Logo Profil" class="w-16 h-16 mx-auto">
+                <p class="mt-2 text-sm">Admin</p>
             </div>
-            <nav class="flex-grow mt-4">
-                <ul>
+
+            <!-- Nav -->
+            <nav class="flex-grow">
+                <ul class="mt-6 space-y-1">
+                    <!-- Home -->
                     <li>
-                        <a href="/Home" class="block py-3 px-4 hover:bg-red-500 rounded transition duration-300">
+                        <a href="/Home" class="flex items-center px-4 py-3 hover:bg-gray-100 transition">
                             <i class="fas fa-home-alt mr-2"></i>
-                            Home
+                            <span>Menu Utama</span>
                         </a>
                     </li>
+
+                    <!-- Publikasi -->
                     <li>
-                        <a href="/publikasi" class="block py-3 px-4 hover:bg-red-500 rounded transition duration-300">
-                            <i class="fas fa-file-alt mr-2"></i>
-                            Publikasi Bencana
-                        </a>
+                        <button @click="openPublikasi = !openPublikasi"
+                            class="flex justify-between items-center w-full px-4 py-3 hover:bg-gray-100 transition">
+                            <div class="flex items-center">
+                                <i class="fas fa-database mr-2"></i>
+                                <span>Publikasi</span>
+                            </div>
+                            <i :class="openPublikasi ? 'fas fa-chevron-up' : 'fas fa-chevron-down'"></i>
+                        </button>
+
+                        <!-- Dropdown -->
+                        <ul x-show="openPublikasi" x-transition class="ml-8 mt-1 space-y-1">
+                            <li>
+                                <a href="/publikasi" class="block px-4 py-2 text-sm hover:bg-gray-100 rounded">
+                                    - Publikasi Berita
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="block px-4 py-2 text-sm hover:bg-gray-100 rounded">
+                                    - Forum Diskusi
+                                </a>
+                            </li>
+                        </ul>
                     </li>
+
+                    <!-- Logout -->
                     <li>
                         <a href="{{ route('logout') }}"
-                            class="block py-3 px-4 hover:bg-red-500 rounded transition duration-300">
+                            class="flex items-center px-4 py-3 hover:bg-gray-100 transition">
                             <i class="fas fa-sign-out-alt mr-2"></i>
-                            Keluar
+                            <span>Keluar</span>
                         </a>
                     </li>
                 </ul>
             </nav>
-            <div class="p-4 border-t border-white text-center text-sm">
+
+            <!-- Footer -->
+            <div class="p-4 border-t text-center text-xs text-gray-500">
                 &copy; 2025 Astacala Rescue
             </div>
         </div>
+
+        <!-- Alpine.js -->
+        <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+
+
+        <!-- Alpine.js CDN (untuk dropdown) -->
+        <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+
 
         <!-- Main Content -->
         <div class="flex-grow p-6">
@@ -78,7 +112,7 @@
             <h1 class="text-3xl font-bold text-gray-800">Welcome to the dashboard admin :)</h1>
 
             <div class="grid grid-cols-3 gap-4 mt-14">
-                <div class="bg-cyan-500 text-white rounded-lg p-6">
+                <div class="bg-cyan-500 text-white rounded-lg p-6 shadow-xl">
                     <div class="flex items-center">
                         <div class="text-5xl">1</div>
                         <div class="ml-4">
@@ -87,7 +121,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="bg-red-500 text-white rounded-lg p-6">
+                <div class="bg-red-500 text-white rounded-lg p-6 shadow-xl">
                     <div class="flex items-center">
                         <div class="text-5xl">3</div>
                         <div class="ml-4">
@@ -96,7 +130,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="bg-green-500 text-white rounded-lg p-6">
+                <div class="bg-green-500 text-white rounded-lg p-6 shadow-xl">
                     <div class="flex items-center">
                         <div class="text-5xl">1</div>
                         <div class="ml-4">
