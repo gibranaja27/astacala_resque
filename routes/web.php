@@ -82,6 +82,7 @@ Route::delete('/publikasi/delete/{id}', [BeritaBencanaController::class, 'hapusD
 Route::post('/berita/{id}/publish', [BeritaBencanaController::class, 'publishPublikasiBeritaBencana'])->name('berita.publish');
 Route::get('/berita-published', [BeritaBencanaController::class, 'apiPublishPublikasiBeritaBencana']);
 Route::get('/berita-bencana', [BeritaBencanaController::class, 'getPublished']);
+Route::get('/berita-bencanas/{id}', [BeritaBencanaController::class, 'show']);
 
 
 

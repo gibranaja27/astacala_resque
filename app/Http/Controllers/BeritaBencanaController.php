@@ -116,4 +116,27 @@ class BeritaBencanaController extends Controller
         $data = BeritaBencana::where('is_published', 1)->get();
         return response()->json($data);
     }
+
+    public function show($id)
+    {
+        $berita = BeritaBencana::find($id);
+
+        if (!$berita) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Data tidak ditemukan'
+            ], 404);
+        }
+
+        return response()->json([
+            'success' => true,
+            'data' => [
+                'judul' => $berita->pblk_judul_bencana,
+                'lokasi' => $berita->pblk_lokasi_bencana,
+                'koordinat' => $berita->pblk_titik_kordinat_bencana,
+                'skala' => $berita->pblk_skala_bencana,
+                'foto' => asset('storage/' . $berita->pblk_foto_bencana),
+            ]
+        ]);
+    }
 }
