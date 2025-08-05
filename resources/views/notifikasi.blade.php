@@ -26,7 +26,7 @@
                 <ul class="mt-6 space-y-1">
                     <!-- Home -->
                     <li>
-                        <a href="/Home" class="flex items-center px-4 py-3 hover:bg-gray-100 transition">
+                        <a href="/dashboard" class="flex items-center px-4 py-3 hover:bg-gray-100 transition">
                             <i class="fas fa-home-alt mr-2"></i>
                             <span>Menu Utama</span>
                         </a>
@@ -82,7 +82,7 @@
         <!-- Main Content -->
 
         <div class="flex-1 p-10">
-            <h1 class="text-2xl font-bold text-red-700 mb-8">Notifikasi Pelaporan Bencana</h1>
+            <h1 class="text-2xl font-bold text-red-700 mb-8 flex justify-center">Notifikasi Pelaporan Bencana</h1>
 
             <div class="space-y-6">
                 @foreach ($data as $item)

@@ -116,9 +116,7 @@ Route::get('/profil-admin/edit', [ProfileAdminController::class, 'edit'])->name(
 Route::put('/profil-admin/update', [ProfileAdminController::class, 'update'])->name('profil.admin.update')->middleware(AdminAuth::class);
 
 // === PROTECTED ===
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(AdminAuth::class);
+Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(AdminAuth::class);
 
 
 

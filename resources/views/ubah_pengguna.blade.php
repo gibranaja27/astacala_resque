@@ -26,7 +26,7 @@
                 <ul class="mt-6 space-y-1">
                     <!-- Home -->
                     <li>
-                        <a href="/Home" class="flex items-center px-4 py-3 hover:bg-gray-100 transition">
+                        <a href="/dashboard" class="flex items-center px-4 py-3 hover:bg-gray-100 transition">
                             <i class="fas fa-home-alt mr-2"></i>
                             <span>Menu Utama</span>
                         </a>
@@ -80,46 +80,64 @@
 
 
         <!-- Main Content -->
-        <div style="margin-left: 100px; margin-top:50px;">
-            <h1 style="font-family: Arial, Helvetica, sans-serif; color:#FF8E27; font-size: x-large;">Ubah Pengguna</h1>
-        </div>
-        <section class="width-100% height-auto" style="margin-left: 80px; display: flex;">
-            <div style="margin-top: 40px;">
-                <form action="/Pengguna/{{ $pengguna->id }}" method="POST">
+        <div class="flex flex-grow items-center justify-center p-8">
+            <div class="bg-white p-8 rounded shadow-md w-full max-w-md">
+                <h1 class="text-2xl text-center font-bold text-red-500 mb-6">Ubah Data Pengguna</h1>
+                <form action="/Pengguna/{{ $pengguna->id }}" method="POST" class="space-y-4">
                     @method('put')
                     @csrf
-                    <div style="margin-bottom: 20px">
-                        <input type="text" name="username_akun_pengguna" placeholder="username_akun_pengguna"
-                            value="{{ $pengguna->username_akun_pengguna }}" style="width: 400px; height: 40px"><br>
+
+                    <div>
+                        <label class="block mb-1 text-sm font-medium">Username</label>
+                        <input type="text" name="username_akun_pengguna"
+                            value="{{ $pengguna->username_akun_pengguna }}"
+                            class="w-full px-3 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-red-700" />
                     </div>
-                    <div style="margin-bottom: 20px">
-                        <input type="text" name="nama_lengkap_pengguna" placeholder="nama_lengkap_pengguna"
-                            value="{{ $pengguna->nama_lengkap_pengguna }}" style="width: 400px; height: 40px"> <br>
+
+                    <div>
+                        <label class="block mb-1 text-sm font-medium">Nama Lengkap</label>
+                        <input type="text" name="nama_lengkap_pengguna"
+                            value="{{ $pengguna->nama_lengkap_pengguna }}"
+                            class="w-full px-3 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-red-700" />
                     </div>
-                    <div style="margin-bottom: 20px">
-                        <input type="text" name="tanggal_lahir_pengguna" placeholder="tanggal_lahir_pengguna"
-                            value="{{ $pengguna->tanggal_lahir_pengguna }}" style="width: 400px; height: 40px">
-                        <br>
+
+                    <div>
+                        <label class="block mb-1 text-sm font-medium">Tanggal Lahir</label>
+                        <input type="date" name="tanggal_lahir_pengguna"
+                            value="{{ $pengguna->tanggal_lahir_pengguna }}"
+                            class="w-full px-3 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-red-700" />
                     </div>
-                    <div style="margin-bottom: 20px">
-                        <input type="text" name="tempat_lahir_pengguna" placeholder="tempat_lahir_pengguna"
-                            value="{{ $pengguna->tempat_lahir_pengguna }}" style="width: 400px; height: 40px"> <br>
+
+                    <div>
+                        <label class="block mb-1 text-sm font-medium">Tempat Lahir</label>
+                        <input type="text" name="tempat_lahir_pengguna"
+                            value="{{ $pengguna->tempat_lahir_pengguna }}"
+                            class="w-full px-3 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-red-700" />
                     </div>
-                    <div style="margin-bottom: 20px">
-                        <input type="text" name="no_handphone_pengguna" placeholder="no_handphone_pengguna"
-                            value="{{ $pengguna->no_handphone_pengguna }}"style="width: 400px; height: 40px"> <br>
+
+                    <div>
+                        <label class="block mb-1 text-sm font-medium">No Handphone</label>
+                        <input type="text" name="no_handphone_pengguna"
+                            value="{{ $pengguna->no_handphone_pengguna }}"
+                            class="w-full px-3 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-red-700" />
                     </div>
-                    <div style="margin-bottom: 20px">
-                        <input type="text" name="password_akun_pengguna" placeholder="password_akun_pengguna"
-                            value="{{ $pengguna->password_akun_pengguna }}"style="width: 400px; height: 40px"> <br>
+
+                    <div>
+                        <label class="block mb-1 text-sm font-medium">Password</label>
+                        <input type="text" name="password_akun_pengguna"
+                            value="{{ $pengguna->password_akun_pengguna }}"
+                            class="w-full px-3 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-red-700" />
                     </div>
-                    <div style="margin-bottom: 20px">
-                        <input type="submit" name="submit" value="update"
-                            style="width: 100px; height: 30px; background-color:#FF8E27; border-radius:5px">
+
+                    <div class="flex justify-center">
+                        <button type="submit"
+                            class="bg-red-700 text-white px-6 py-2 rounded hover:bg-red-600 transition">
+                            Update
+                        </button>
                     </div>
                 </form>
             </div>
-        </section>
+        </div>
     </div>
 </body>
 

@@ -31,7 +31,7 @@
                 <ul class="mt-6 space-y-1">
                     <!-- Home -->
                     <li>
-                        <a href="/Home" class="flex items-center px-4 py-3 hover:bg-gray-100 transition">
+                        <a href="/dashboard" class="flex items-center px-4 py-3 hover:bg-gray-100 transition">
                             <i class="fas fa-home-alt mr-2"></i>
                             <span>Menu Utama</span>
                         </a>
@@ -105,12 +105,12 @@
                 </a>
             </div>
 
-            <h1 class="text-3xl font-bold text-gray-800">Welcome to the dashboard admin :)</h1>
+            <h1 class="text-3xl font-bold text-gray-800">Welcome To Dashboard Admin</h1>
 
             <div class="grid grid-cols-3 gap-4 mt-14">
                 <div class="bg-cyan-500 text-white rounded-lg p-6 shadow-xl">
                     <div class="flex items-center">
-                        <div class="text-5xl">1</div>
+                        <div class="text-5xl">{{ $jumlahPelaporan }}</div>
                         <div class="ml-4">
                             <h2 class="text-lg">Data Pelaporan</h2>
                             <a href="/pelaporan" class="hover:underline">More Info ></a>
@@ -119,7 +119,7 @@
                 </div>
                 <div class="bg-red-500 text-white rounded-lg p-6 shadow-xl">
                     <div class="flex items-center">
-                        <div class="text-5xl">3</div>
+                        <div class="text-5xl">{{ $jumlahAdmin }}</div>
                         <div class="ml-4">
                             <h2 class="text-lg">Admin</h2>
                             <a href="/Dataadmin" class="hover:underline">More Info ></a>
@@ -128,7 +128,7 @@
                 </div>
                 <div class="bg-green-500 text-white rounded-lg p-6 shadow-xl">
                     <div class="flex items-center">
-                        <div class="text-5xl">1</div>
+                        <div class="text-5xl">{{ $jumlahPengguna }}</div>
                         <div class="ml-4">
                             <h2 class="text-lg">Pengguna</h2>
                             <a href="/Datapengguna" class="hover:underline">More Info ></a>

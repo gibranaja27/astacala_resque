@@ -25,7 +25,7 @@
             <ul class="mt-6 space-y-1">
                 <!-- Home -->
                 <li>
-                    <a href="/Home" class="flex items-center px-4 py-3 hover:bg-gray-100 transition">
+                    <a href="/dashboard" class="flex items-center px-4 py-3 hover:bg-gray-100 transition">
                         <i class="fas fa-home-alt mr-2"></i>
                         <span>Menu Utama</span>
                     </a>
@@ -80,7 +80,7 @@
     <!-- Main Content -->
     <div class="flex flex-grow items-center justify-center">
         <div class="bg-white p-8 rounded shadow-md w-full max-w-md">
-            <h1 class="text-2xl font-bold text-orange-500 mb-6">Ubah Data Admin</h1>
+            <h1 class="text-2xl text-center font-bold text-red-500 mb-6">Ubah Data Admin</h1>
             <form action="/Admin/{{ $admin->id }}" method="POST" class="space-y-4">
                 @method('put')
                 @csrf
@@ -88,48 +88,48 @@
                 <div>
                     <label class="block mb-1 text-sm font-medium">Username</label>
                     <input type="text" name="username_akun_admin" value="{{ $admin->username_akun_admin }}"
-                        class="w-full px-3 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-orange-400" />
+                        class="w-full px-3 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-red-700" />
                 </div>
 
                 <div>
                     <label class="block mb-1 text-sm font-medium">Nama Lengkap</label>
                     <input type="text" name="nama_lengkap_admin" value="{{ $admin->nama_lengkap_admin }}"
-                        class="w-full px-3 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-orange-400" />
+                        class="w-full px-3 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-red-700" />
                 </div>
 
                 <div>
                     <label class="block mb-1 text-sm font-medium">Tanggal Lahir</label>
                     <input type="date" name="tanggal_lahir_admin" value="{{ $admin->tanggal_lahir_admin }}"
-                        class="w-full px-3 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-orange-400" />
+                        class="w-full px-3 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-red-700" />
                 </div>
 
                 <div>
                     <label class="block mb-1 text-sm font-medium">Tempat Lahir</label>
                     <input type="text" name="tempat_lahir_admin" value="{{ $admin->tempat_lahir_admin }}"
-                        class="w-full px-3 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-orange-400" />
+                        class="w-full px-3 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-red-700" />
                 </div>
 
                 <div>
                     <label class="block mb-1 text-sm font-medium">No Handphone</label>
                     <input type="text" name="no_handphone_admin" value="{{ $admin->no_handphone_admin }}"
-                        class="w-full px-3 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-orange-400" />
+                        class="w-full px-3 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-red-700" />
                 </div>
 
                 <div>
                     <label class="block mb-1 text-sm font-medium">No Anggota</label>
                     <input type="text" name="no_anggota" value="{{ $admin->no_anggota }}"
-                        class="w-full px-3 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-orange-400" />
+                        class="w-full px-3 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-red-700" />
                 </div>
 
                 <div>
                     <label class="block mb-1 text-sm font-medium">Password</label>
                     <input type="text" name="password_akun_admin" value="{{ $admin->password_akun_admin }}"
-                        class="w-full px-3 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-orange-400" />
+                        class="w-full px-3 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-red-700" />
                 </div>
 
-                <div>
+                <div class="flex justify-center">
                     <button type="submit"
-                        class="bg-orange-500 text-white px-4 py-2 rounded hover:bg-orange-600 transition">Update</button>
+                        class="bg-red-700 text-white px-4 py-2 rounded hover:bg-red-600 transition">Update</button>
                 </div>
             </form>
         </div>
