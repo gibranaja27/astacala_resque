@@ -13,7 +13,7 @@
     <div class="flex h-screen">
         <!-- Sidebar -->
         <!-- Sidebar -->
-        <div class="w-48 bg-white text-black flex flex-col h-screen border-r shadow-md font-semibold"
+        <div class="w-60 bg-white text-black flex flex-col h-screen border-r shadow-md font-semibold fixed top-0 left-0"
             x-data="{ openPublikasi: false }">
             <!-- Logo & Profil -->
             <div class="p-4 text-center border-b">
@@ -80,7 +80,7 @@
 
 
         <!-- Main Content -->
-        <div class="flex-grow p-6">
+        <div class="flex-grow p-6 ml-60">
             <h1 class="text-4xl font-bold text-center font-sansz mt-5">Data Publikasi Bencana</h1>
 
             <!-- Tombol Tambah Data -->
@@ -96,12 +96,12 @@
                 <table class="min-w-full bg-white border border-gray-300">
                     <thead class="bg-gray-200 text-gray-600">
                         <tr>
-                            <th class="px-4 py-2 border">Judul Singkat</th>
-                            <th class="px-4 py-2 border">Lokasi</th>
-                            <th class="px-4 py-2 border">Koordinat</th>
-                            <th class="px-4 py-2 border">Skala</th>
-                            <th class="px-4 py-2 border">Deskripsi</th>
-                            <th class="px-4 py-2 border">Foto</th>
+                            <th class="px-4 py-2 border">Judul Singkat Bencana</th>
+                            <th class="px-4 py-2 border">Lokasi Bencana</th>
+                            <th class="px-4 py-2 border">Titik Kordinat Lokasi</th>
+                            <th class="px-4 py-2 border">Skala Bencana</th>
+                            <th class="px-4 py-2 border">Deskripsi Terkait Bencana</th>
+                            <th class="px-4 py-2 border">Foto Bencana</th>
                             <th class="px-4 py-2 border">Dibuat Oleh</th>
                             <th class="px-4 py-2 border">Aksi</th>
                         </tr>

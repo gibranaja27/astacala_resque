@@ -15,7 +15,7 @@
     <div class="flex h-screen">
         <!-- Sidebar -->
         <!-- Sidebar -->
-        <div class="w-48 bg-white text-black flex flex-col h-screen border-r shadow-md font-semibold"
+        <div class="w-60 bg-white text-black flex flex-col h-screen border-r shadow-md font-semibold fixed top-0 left-0"
             x-data="{ openPublikasi: false }">
             <!-- Logo & Profil -->
             <div class="p-4 text-center border-b">
@@ -82,7 +82,7 @@
 
 
         <!-- Main Content -->
-        <div class="flex-grow p-6">
+        <div class="flex-grow p-6 ml-60">
             <h1 class="text-4xl font-bold text-center font-sansz mt-5">Data Pelaporan</h1>
 
             <div class="overflow-x-auto rounded-lg shadow mt-16">
@@ -179,10 +179,19 @@
                 confirmButtonText: 'DITERIMA',
                 cancelButtonText: 'DITOLAK',
             }).then((result) => {
+                let status = '';
                 if (result.isConfirmed) {
-                    window.location.href = "/pelaporan/verifikasi/" + id + "?status=DITERIMA";
+                    status = 'DITERIMA';
                 } else if (result.dismiss === Swal.DismissReason.cancel) {
-                    window.location.href = "/pelaporan/verifikasi/" + id + "?status=DITOLAK";
+                    status = 'DITOLAK';
+                }
+
+                if (status !== '') {
+                    fetch(`/pelaporan/verifikasi/${id}?status=${status}`)
+                        .then(() => {
+                            Swal.fire('Berhasil!', 'Status verifikasi diperbarui.', 'success')
+                                .then(() => window.location.reload());
+                        });
                 }
             });
         }

@@ -13,7 +13,7 @@
     <div class="flex h-screen">
         <!-- Sidebar -->
         <!-- Sidebar -->
-        <div class="w-48 bg-white text-black flex flex-col h-screen border-r shadow-md font-semibold"
+        <div class="w-60 bg-white text-black flex flex-col h-screen border-r shadow-md font-semibold fixed top-0 left-0"
             x-data="{ openPublikasi: false }">
             <!-- Logo & Profil -->
             <div class="p-4 text-center border-b">
@@ -80,7 +80,7 @@
 
 
         <!-- Main Content -->
-        <div class="flex-grow p-6">
+        <div class="flex-grow p-6 ml-60">
             <h1 class="text-4xl font-bold text-center font-sansz mt-5">Data Admin</h1>
             <div class="overflow-x-auto mt-16">
                 <table class="min-w-full bg-white border border-gray-300">

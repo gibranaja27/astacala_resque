@@ -13,7 +13,7 @@
     <div class="flex h-screen">
         <!-- Sidebar -->
         <!-- Sidebar -->
-        <div class="w-48 bg-white text-black flex flex-col h-screen border-r shadow-md font-semibold"
+        <div class="w-60 bg-white text-black flex flex-col h-screen border-r shadow-md font-semibold fixed top-0 left-0"
             x-data="{ openPublikasi: false }">
             <!-- Logo & Profil -->
             <div class="p-4 text-center border-b">
@@ -80,7 +80,7 @@
 
 
         <!-- Main Content -->
-        <div class="container mx-auto">
+        <div class="container mx-auto ml-60">
             <h1 class="text-2xl font-bold mb-4">Edit Pelaporan</h1>
 
             <form action="{{ route('pelaporan.update', $data->id) }}" method="POST" enctype="multipart/form-data">

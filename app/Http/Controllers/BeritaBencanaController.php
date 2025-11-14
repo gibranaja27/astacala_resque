@@ -107,10 +107,7 @@ class BeritaBencanaController extends Controller
         $berita->save();
         return redirect()->route('berita.index')->with('success', 'Berita berhasil dipublish!');
     }
-    public function apiPublishPublikasiBeritaBencana()
-    {
-        return BeritaBencana::where('is_published', true)->latest()->get();
-    }
+    
     public function getPublished()
     {
         $data = BeritaBencana::where('is_published', 1)->get();

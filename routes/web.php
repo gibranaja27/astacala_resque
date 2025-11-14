@@ -80,7 +80,6 @@ Route::get('/publikasi/edit/{id}', [BeritaBencanaController::class, 'editDataPub
 Route::put('/publikasi/update/{id}', [BeritaBencanaController::class, 'simpanEditDataPublikasiBeritaBencana'])->name('berita.update');
 Route::delete('/publikasi/delete/{id}', [BeritaBencanaController::class, 'hapusDataPublikasiBeritaBencana'])->name('berita.destroy');
 Route::post('/berita/{id}/publish', [BeritaBencanaController::class, 'publishPublikasiBeritaBencana'])->name('berita.publish');
-Route::get('/berita-published', [BeritaBencanaController::class, 'apiPublishPublikasiBeritaBencana']);
 Route::get('/berita-bencana', [BeritaBencanaController::class, 'getPublished']);
 Route::get('/berita-bencanas/{id}', [BeritaBencanaController::class, 'show']);
 
@@ -91,12 +90,22 @@ Route::get('/berita-bencanas/{id}', [BeritaBencanaController::class, 'show']);
 Route::get('/pelaporan', [PelaporanController::class, 'membacaDataPelaporan'])->name('pelaporan.index');
 Route::delete('/pelaporan/delete/{id}', [PelaporanController::class, 'menghapusDataPelaporan'])->name('pelaporan.destroy');
 Route::get('/notifikasi', [PelaporanController::class, 'menampilkanNotifikasiPelaporanMasuk'])->name('pelaporan.notifikasi');
+Route::post('/notifikasi/{id}/hapus', [PelaporanController::class, 'hapusNotifikasi'])
+    ->name('notifikasi.hapus');
+
 Route::get('/pelaporan/verifikasi/{id}', [PelaporanController::class, 'memberikanNotifikasiVerifikasi'])->name('pelaporan.verifikasi');
+
+// notifikasi mobile
 Route::get('/notifikasi/{pengguna_id}', [PelaporanController::class, 'getVerifikasi']);
+Route::post('/notifikasi/mark-as-read/{pengguna_id}', [PelaporanController::class, 'markAsRead']);
+
 // Route API untuk Flutter mobile
 Route::middleware('api')->group(function () {
     Route::post('/api/pelaporans', [PelaporanController::class, 'store']);
 });
+// mengirim data pelaporan ke home mobile
+Route::get('/pelaporan-diterima', [PelaporanController::class, 'getPelaporanDiterima']);
+Route::get('/detail-pelaporan/{id}', [PelaporanController::class, 'shows']);
 
 
 
@@ -115,10 +124,14 @@ Route::get('/profil-admin/edit', [ProfileAdminController::class, 'edit'])->name(
 // Simpan perubahan data profil admin
 Route::put('/profil-admin/update', [ProfileAdminController::class, 'update'])->name('profil.admin.update')->middleware(AdminAuth::class);
 
-// === PROTECTED ===
+// route halaman dashboard
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(AdminAuth::class);
-
-
+Route::get('/pelaporan-terverifikasi', [DashboardController::class, 'semuaPelaporan'])
+    ->middleware(AdminAuth::class)
+    ->name('pelaporan.terverifikasi');
+Route::get('/publikasi-terpublikasi', [DashboardController::class, 'semuaPublikasi'])
+    ->middleware(AdminAuth::class)
+    ->name('publikasi.terpublikasi');
 
 
 Route::get('/Logout', function () {

@@ -13,7 +13,7 @@
     <div class="flex h-screen">
         <!-- Sidebar -->
         <!-- Sidebar -->
-        <div class="w-48 bg-white text-black flex flex-col h-screen border-r shadow-md font-semibold"
+        <div class="w-60 bg-white text-black flex flex-col h-screen border-r shadow-md font-semibold fixed top-0 left-0"
             x-data="{ openPublikasi: false }">
             <!-- Logo & Profil -->
             <div class="p-4 text-center border-b">
@@ -81,7 +81,7 @@
 
         <!-- Main Content -->
 
-        <div class="flex-1 p-10">
+        <div class="flex-1 p-10 ml-60">
             <h1 class="text-2xl font-bold text-red-700 mb-8 flex justify-center">Notifikasi Pelaporan Bencana</h1>
 
             <div class="space-y-6">
@@ -103,6 +103,16 @@
                             <i class="fas fa-bell text-red-700 text-3xl mb-2"></i>
                             <a href="#"
                                 class="bg-red-700 text-white py-1 px-4 rounded hover:bg-red-800">Detail</a>
+
+                            <!-- Tombol hapus notifikasi -->
+                            <form action="{{ route('notifikasi.hapus', $item->id) }}" method="POST" class="pt-6"
+                                onsubmit="return confirm('Hapus notifikasi ini dari tampilan?');">
+                                @csrf
+                                <button type="submit"
+                                    class="bg-gray-500 text-white py-1 px-4 rounded hover:bg-gray-600">
+                                    Hapus
+                                </button>
+                            </form>
                         </div>
                     </div>
                 @endforeach

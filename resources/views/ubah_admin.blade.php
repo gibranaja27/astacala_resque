@@ -13,7 +13,7 @@
 
     <!-- Sidebar -->
     <!-- Sidebar -->
-    <div class="w-48 bg-white text-black flex flex-col h-screen border-r shadow-md font-semibold" x-data="{ openPublikasi: false }">
+    <div class="w-60 bg-white text-black flex flex-col h-screen border-r shadow-md font-semibold fixed top-0 left-0" x-data="{ openPublikasi: false }">
         <!-- Logo & Profil -->
         <div class="p-4 text-center border-b">
             <img src="{{ asset('image/yayasan_astacala_logo.png') }}" alt="Logo Profil" class="w-16 h-16 mx-auto">
@@ -78,7 +78,7 @@
 
 
     <!-- Main Content -->
-    <div class="flex flex-grow items-center justify-center">
+    <div class="flex flex-grow items-center justify-center ml-60">
         <div class="bg-white p-8 rounded shadow-md w-full max-w-md">
             <h1 class="text-2xl text-center font-bold text-red-500 mb-6">Ubah Data Admin</h1>
             <form action="/Admin/{{ $admin->id }}" method="POST" class="space-y-4">

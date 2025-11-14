@@ -13,7 +13,7 @@
     <div class="flex h-screen">
         <!-- Sidebar -->
         <!-- Sidebar -->
-        <div class="w-48 bg-white text-black flex flex-col h-screen border-r shadow-md font-semibold"
+        <div class="w-60 bg-white text-black flex flex-col h-screen border-r shadow-md font-semibold fixed top-0 left-0"
             x-data="{ openPublikasi: false }">
             <!-- Logo & Profil -->
             <div class="p-4 text-center border-b">
@@ -80,7 +80,7 @@
 
 
         <!-- Main Content -->
-        <div class="flex flex-grow items-center justify-center p-8">
+        <div class="flex flex-grow items-center justify-center p-8 ml-60">
             <div class="bg-white p-8 rounded shadow-md w-full max-w-md">
                 <h1 class="text-2xl text-center font-bold text-red-500 mb-6">Ubah Data Pengguna</h1>
                 <form action="/Pengguna/{{ $pengguna->id }}" method="POST" class="space-y-4">
