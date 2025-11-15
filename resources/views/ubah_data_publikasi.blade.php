@@ -16,9 +16,8 @@
         x-data="{ openPublikasi: false }">
         <!-- Logo & Profil -->
         <div class="p-4 text-center border-b">
-            <img src="{{ asset('image/yayasan_astacala_logo.png') }}" alt="Logo Profil" class="w-16 h-16 mx-auto" />
-            <p class="mt-2 text-sm">Admin</p>
-        </div>
+                <img src="{{ asset('image/yayasan_astacala_logo.png') }}" alt="Logo Profil" class="w-28 h-28 mx-auto">
+            </div>
 
         <!-- Nav -->
         <nav class="flex-grow">

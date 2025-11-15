@@ -14,13 +14,11 @@
 <body class="bg-gray-100">
     <div class="flex h-screen">
         <!-- Sidebar -->
-        <!-- Sidebar -->
         <div class="w-60 bg-white text-black flex flex-col h-screen border-r shadow-md font-semibold fixed top-0 left-0"
             x-data="{ openPublikasi: false }">
             <!-- Logo & Profil -->
             <div class="p-4 text-center border-b">
-                <img src="{{ asset('image/yayasan_astacala_logo.png') }}" alt="Logo Profil" class="w-16 h-16 mx-auto">
-                <p class="mt-2 text-sm">Admin</p>
+                <img src="{{ asset('image/yayasan_astacala_logo.png') }}" alt="Logo Profil" class="w-28 h-28 mx-auto">
             </div>
 
             <!-- Nav -->
@@ -29,42 +27,16 @@
                     <!-- Home -->
                     <li>
                         <a href="/dashboard" class="flex items-center px-4 py-3 hover:bg-gray-100 transition">
-                            <i class="fas fa-home-alt mr-2"></i>
+                            <i class="fas fa-home-alt mr-2 text-3xl pr-5"></i>
                             <span>Menu Utama</span>
                         </a>
-                    </li>
-
-                    <!-- Publikasi -->
-                    <li>
-                        <button @click="openPublikasi = !openPublikasi"
-                            class="flex justify-between items-center w-full px-4 py-3 hover:bg-gray-100 transition">
-                            <div class="flex items-center">
-                                <i class="fas fa-database mr-2"></i>
-                                <span>Publikasi</span>
-                            </div>
-                            <i :class="openPublikasi ? 'fas fa-chevron-up' : 'fas fa-chevron-down'"></i>
-                        </button>
-
-                        <!-- Dropdown -->
-                        <ul x-show="openPublikasi" x-transition class="ml-8 mt-1 space-y-1">
-                            <li>
-                                <a href="/publikasi" class="block px-4 py-2 text-sm hover:bg-gray-100 rounded">
-                                    - Publikasi Berita
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="block px-4 py-2 text-sm hover:bg-gray-100 rounded">
-                                    - Forum Diskusi
-                                </a>
-                            </li>
-                        </ul>
                     </li>
 
                     <!-- Logout -->
                     <li>
                         <a href="{{ route('logout') }}"
                             class="flex items-center px-4 py-3 hover:bg-gray-100 transition">
-                            <i class="fas fa-sign-out-alt mr-2"></i>
+                            <i class="fas fa-sign-out-alt mr-2 text-red-700 text-3xl pr-5"></i>
                             <span>Keluar</span>
                         </a>
                     </li>
@@ -85,82 +57,105 @@
         <div class="flex-grow p-6 ml-60">
             <h1 class="text-4xl font-bold text-center font-sansz mt-5">Data Pelaporan</h1>
 
-            <div class="overflow-x-auto rounded-lg shadow mt-16">
-                <table class="min-w-full bg-white border border-gray-300 text-sm text-center">
-                    <thead class="bg-gray-100">
+            <div class="overflow-x-auto mt-16">
+                <table class="min-w-full bg-white border border-gray-300">
+                    <!-- Tabel Header -->
+                    <thead class="bg-gray-200 text-gray-600">
                         <tr>
-                            <th class="px-4 py-3 border">Username Pengguna</th>
-                            <th class="px-4 py-3 border">Nama Tim</th>
-                            <th class="px-4 py-3 border">Jumlah Personel</th>
-                            <th class="px-4 py-3 border">No HP</th>
-                            <th class="px-4 py-3 border">Informasi Singkat</th>
-                            <th class="px-4 py-3 border">Lokasi</th>
-                            <th class="px-4 py-3 border">Koordinat</th>
-                            <th class="px-4 py-3 border">Skala</th>
-                            <th class="px-4 py-3 border">Jumlah Korban</th>
-                            <th class="px-4 py-3 border">Deskripsi</th>
-                            <th class="px-4 py-3 border">Foto Lokasi</th>
-                            <th class="px-4 py-3 border">Bukti Tugas</th>
-                            <th class="px-4 py-3 border">Aksi</th>
+                            <th class="px-4 py-2 border">Username Pengguna</th>
+                            <th class="px-4 py-2 border">Nama Tim</th>
+                            <th class="px-4 py-2 border">Jumlah Personel</th>
+                            <th class="px-4 py-2 border">No HP</th>
+                            <th class="px-4 py-2 border">Informasi Singkat</th>
+                            <th class="px-4 py-2 border">Lokasi</th>
+                            <th class="px-4 py-2 border">Koordinat</th>
+                            <th class="px-4 py-2 border">Skala</th>
+                            <th class="px-4 py-2 border">Jumlah Korban</th>
+                            <th class="px-4 py-2 border">Deskripsi</th>
+                            <th class="px-4 py-2 border">Foto Lokasi</th>
+                            <th class="px-4 py-2 border">Bukti Tugas</th>
+                            <th class="px-4 py-2 border">Aksi</th>
                         </tr>
                     </thead>
-                    <tbody class="divide-y divide-gray-200">
+
+                    <!-- Tabel Body -->
+                    <tbody>
                         @foreach ($data as $row)
                             <tr class="hover:bg-gray-100">
-                                <td class="px-4 py-3">
-                                    {{ $row->pengguna->username_akun_pengguna ?? 'Tidak ada username' }}</td>
-                                <td class="px-4 py-3">{{ $row->nama_team_pelapor }}</td>
-                                <td class="px-4 py-3">{{ $row->jumlah_personel }}</td>
-                                <td class="px-4 py-3">{{ $row->no_handphone }}</td>
-                                <td class="px-4 py-3">{{ $row->informasi_singkat_bencana }}</td>
-                                <td class="px-4 py-3">{{ $row->lokasi_bencana }}</td>
-                                <td class="px-4 py-3">
-                                    {{ $row->titik_kordinat_lokasi_bencana }}
-                                    <button onclick="showMap('{{ $row->titik_kordinat_lokasi_bencana }}')"
-                                        class="ml-2 text-blue-600 hover:text-blue-800">
-                                        <i class="fas fa-eye"></i>
-                                    </button>
+                                <td class="px-4 py-2 border">
+                                    {{ $row->pengguna->username_akun_pengguna ?? 'Tidak ada username' }}
                                 </td>
-                                <td class="px-4 py-3">{{ $row->skala_bencana }}</td>
-                                <td class="px-4 py-3">{{ $row->jumlah_korban }}</td>
-                                <td class="px-4 py-3">{{ $row->deskripsi_terkait_data_lainya }}</td>
-                                <td class="px-4 py-3">
+
+                                <td class="px-4 py-2 border">{{ $row->nama_team_pelapor }}</td>
+                                <td class="px-4 py-2 border">{{ $row->jumlah_personel }}</td>
+                                <td class="px-4 py-2 border">{{ $row->no_handphone }}</td>
+                                <td class="px-4 py-2 border">{{ $row->informasi_singkat_bencana }}</td>
+                                <td class="px-4 py-2 border">{{ $row->lokasi_bencana }}</td>
+
+                                <!-- Koordinat + Button Lihat Map -->
+                                <td class="px-4 py-2 border text-center">
+                                    {{ $row->titik_kordinat_lokasi_bencana }}
+                                    <div>
+                                        <button onclick="showMap('{{ $row->titik_kordinat_lokasi_bencana }}')"
+                                            class="ml-2 text-blue-600 hover:text-blue-800">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                    </div>
+                                </td>
+
+                                <td class="px-4 py-2 border">{{ $row->skala_bencana }}</td>
+                                <td class="px-4 py-2 border">{{ $row->jumlah_korban }}</td>
+                                <td class="px-4 py-2 border">{{ $row->deskripsi_terkait_data_lainya }}</td>
+
+                                <!-- Foto -->
+                                <td class="px-4 py-2 border">
                                     @if ($row->foto_lokasi_bencana)
                                         <img src="{{ asset('storage/' . $row->foto_lokasi_bencana) }}"
-                                            alt="Foto Lokasi" class="w-24 h-auto rounded shadow">
+                                            alt="Foto Lokasi" class="w-24 h-auto rounded shadow border">
                                     @else
                                         <span class="text-gray-500">Tidak ada foto</span>
                                     @endif
                                 </td>
-                                <td class="px-4 py-3">
+
+                                <!-- File -->
+                                <td class="px-4 py-2 border">
                                     @if ($row->bukti_surat_perintah_tugas)
                                         <a href="{{ asset('storage/' . $row->bukti_surat_perintah_tugas) }}"
-                                            target="_blank" class="text-blue-600 underline hover:text-blue-800">Lihat
-                                            File</a>
+                                            target="_blank" class="text-blue-600 underline hover:text-blue-800">
+                                            Lihat File
+                                        </a>
                                     @else
                                         <span class="text-gray-500">Tidak ada file</span>
                                     @endif
                                 </td>
-                                <td class="px-4 py-3 space-x-2">
+
+                                <!-- Aksi -->
+                                <td class="px-4 py-2 border text-center flex flex-col items-center space-y-2">
+
+                                    <!-- Tombol Delete -->
                                     <form action="{{ route('pelaporan.destroy', $row->id) }}" method="POST"
-                                        class="inline">
+                                        class="w-full flex justify-center">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" onclick="return confirm('Hapus data ini?')"
-                                            class="px-6 py-1 bg-red-500 text-white rounded hover:bg-red-600">
+                                            class="w-28 px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600 text-sm font-semibold text-center">
                                             Delete
                                         </button>
                                     </form>
+
+                                    <!-- Tombol Verifikasi -->
                                     <button type="button" onclick="verifikasiData({{ $row->id }})"
-                                        class="px-5 py-1 mt-6 bg-green-500 text-white rounded hover:bg-green-600">
+                                        class="w-28 px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 text-sm font-semibold">
                                         Verifikasi
                                     </button>
+
                                 </td>
                             </tr>
                         @endforeach
                     </tbody>
                 </table>
             </div>
+
 
 
 

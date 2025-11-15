@@ -17,8 +17,7 @@
             x-data="{ openPublikasi: false }">
             <!-- Logo & Profil -->
             <div class="p-4 text-center border-b">
-                <img src="{{ asset('image/yayasan_astacala_logo.png') }}" alt="Logo Profil" class="w-16 h-16 mx-auto">
-                <p class="mt-2 text-sm">Admin</p>
+                <img src="{{ asset('image/yayasan_astacala_logo.png') }}" alt="Logo Profil" class="w-28 h-28 mx-auto">
             </div>
 
             <!-- Nav -->
@@ -30,32 +29,6 @@
                             <i class="fas fa-home-alt mr-2"></i>
                             <span>Menu Utama</span>
                         </a>
-                    </li>
-
-                    <!-- Publikasi -->
-                    <li>
-                        <button @click="openPublikasi = !openPublikasi"
-                            class="flex justify-between items-center w-full px-4 py-3 hover:bg-gray-100 transition">
-                            <div class="flex items-center">
-                                <i class="fas fa-database mr-2"></i>
-                                <span>Publikasi</span>
-                            </div>
-                            <i :class="openPublikasi ? 'fas fa-chevron-up' : 'fas fa-chevron-down'"></i>
-                        </button>
-
-                        <!-- Dropdown -->
-                        <ul x-show="openPublikasi" x-transition class="ml-8 mt-1 space-y-1">
-                            <li>
-                                <a href="/publikasi" class="block px-4 py-2 text-sm hover:bg-gray-100 rounded">
-                                    - Publikasi Berita
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="block px-4 py-2 text-sm hover:bg-gray-100 rounded">
-                                    - Forum Diskusi
-                                </a>
-                            </li>
-                        </ul>
                     </li>
 
                     <!-- Logout -->
