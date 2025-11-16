@@ -99,8 +99,8 @@
 
 
     <div class="mt-7">
-        <a href="{{ url('/dashboard') }}" class="px-6 py-2 bg-gray-600 text-white rounded hover:bg-gray-700">
-            Kembali ke Rumah
+        <a href="{{ url('/dashboard') }}" class="px-6 py-2 bg-red-600 text-white rounded hover:bg-red-700">
+            Kembali ke Dashboard
         </a>
     </div>
 </body>

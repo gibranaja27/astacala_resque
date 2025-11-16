@@ -185,7 +185,7 @@
             <div class="flex justify-start mt-8">
                 <a href="{{ route('pelaporan.terverifikasi') }}"
                     class="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700">
-                    Lihat Secukupnya.
+                    Lihat Selengkapnya
                 </a>
             </div>
         </div>
