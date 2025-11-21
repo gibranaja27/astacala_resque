@@ -22,7 +22,7 @@ class Pelaporan extends Model
         'pelapor_pengguna_id',
         'status_notifikasi',
         'status_verifikasi',
-        'is_notifikasi_web',  
+        'is_notifikasi_web',
         'sudah_dibaca'
     ];
 
