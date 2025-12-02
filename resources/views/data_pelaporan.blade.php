@@ -65,14 +65,13 @@
                             <th class="px-4 py-2 border">Username Pengguna</th>
                             <th class="px-4 py-2 border">Nama Tim</th>
                             <th class="px-4 py-2 border">Jumlah Personel</th>
-                            <th class="px-4 py-2 border">No HP</th>
                             <th class="px-4 py-2 border">Informasi Singkat</th>
                             <th class="px-4 py-2 border">Lokasi</th>
                             <th class="px-4 py-2 border">Koordinat</th>
                             <th class="px-4 py-2 border">Skala</th>
                             <th class="px-4 py-2 border">Jumlah Korban</th>
                             <th class="px-4 py-2 border">Deskripsi</th>
-                            <th class="px-4 py-2 border">Foto Lokasi</th>
+                            <th class="px-4 py-2 border">Foto Lokasi Bencana</th>
                             <th class="px-4 py-2 border">Bukti Tugas</th>
                             <th class="px-4 py-2 border">Aksi</th>
                         </tr>
@@ -88,7 +87,6 @@
 
                                 <td class="px-4 py-2 border">{{ $row->nama_team_pelapor }}</td>
                                 <td class="px-4 py-2 border">{{ $row->jumlah_personel }}</td>
-                                <td class="px-4 py-2 border">{{ $row->no_handphone }}</td>
                                 <td class="px-4 py-2 border">{{ $row->informasi_singkat_bencana }}</td>
                                 <td class="px-4 py-2 border">{{ $row->lokasi_bencana }}</td>
 
