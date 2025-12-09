@@ -23,7 +23,8 @@ class Pelaporan extends Model
         'status_notifikasi',
         'status_verifikasi',
         'is_notifikasi_web',
-        'sudah_dibaca'
+        'sudah_dibaca',
+        'updated_at'
     ];
 
     protected $casts = [
