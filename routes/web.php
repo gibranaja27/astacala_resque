@@ -94,6 +94,8 @@ Route::post('/notifikasi/{id}/hapus', [PelaporanController::class, 'hapusNotifik
     ->name('notifikasi.hapus');
 
 Route::get('/pelaporan/verifikasi/{id}', [PelaporanController::class, 'memberikanNotifikasiVerifikasi'])->name('pelaporan.verifikasi');
+Route::get('/getWeather', [PelaporanController::class, 'getWeatherByCoordinate'])->name('weather.get');
+
 
 // notifikasi mobile
 Route::get('/notifikasi/{pengguna_id}', [PelaporanController::class, 'getVerifikasi']);

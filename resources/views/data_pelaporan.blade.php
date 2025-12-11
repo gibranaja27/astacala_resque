@@ -98,6 +98,10 @@
                                             class="ml-2 text-blue-600 hover:text-blue-800">
                                             <i class="fas fa-eye"></i>
                                         </button>
+                                        <button onclick="showWeather('{{ $row->titik_kordinat_lokasi_bencana }}')"
+                                            class="text-green-600 hover:text-green-800">
+                                            <i class="fas fa-cloud-sun text-lg"></i>
+                                        </button>
                                     </div>
                                 </td>
 
@@ -212,6 +216,40 @@
                         .bindPopup('Lokasi Bencana').openPopup();
                 }
             });
+        }
+
+        function showWeather(coordinate) {
+
+            // koordinat format -> "lat, lon"
+            let coords = coordinate.split(',');
+            let lat = coords[0].trim();
+            let lon = coords[1].trim();
+
+            fetch(`/getWeather?lat=${lat}&lon=${lon}`)
+                .then(res => res.json())
+                .then(res => {
+                    if (!res.success) {
+                        alert("Gagal mendapatkan data cuaca!");
+                        return;
+                    }
+
+                    let data = res.data;
+                    let iconUrl = `https://openweathermap.org/img/w/${data.icon}.png`;
+
+                    Swal.fire({
+                        title: `Cuaca Saat Ini`,
+                        html: `
+                        <img src="${iconUrl}">
+                        <p class="mt-3 font-bold text-xl">${data.temp}°C</p>
+                        <p>${data.description}</p>
+                        <table class="mt-3 mx-auto text-left">
+                            <tr><td>Kelembapan</td><td>:</td><td>${data.humidity}%</td></tr>
+                            <tr><td>Kecepatan angin</td><td>:</td><td>${data.wind} m/s</td></tr>
+                        </table>
+                    `,
+                        icon: 'info'
+                    });
+                })
         }
     </script>
 </body>

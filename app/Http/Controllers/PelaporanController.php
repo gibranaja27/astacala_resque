@@ -17,6 +17,40 @@ class PelaporanController extends Controller
         return view('data_pelaporan', compact('data'));
     }
 
+    public function getWeatherByCoordinate(Request $request)
+    {
+        $lat = $request->lat;
+        $lon = $request->lon;
+
+        if (!$lat || !$lon) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Koordinat tidak valid!'
+            ], 400);
+        }
+
+        // API KEY OPEN WEATHER MAP
+        $apiKey = env('OPENWEATHER_API_KEY');
+
+        $url = "https://api.openweathermap.org/data/2.5/weather?lat={$lat}&lon={$lon}&appid={$apiKey}&units=metric";
+
+        $weather = file_get_contents($url);
+        $weatherData = json_decode($weather);
+
+        return response()->json([
+            'success' => true,
+            'data' => [
+                'temp' => $weatherData->main->temp,
+                'condition' => $weatherData->weather[0]->main,
+                'description' => $weatherData->weather[0]->description,
+                'humidity' => $weatherData->main->humidity,
+                'wind' => $weatherData->wind->speed,
+                'icon' => $weatherData->weather[0]->icon,
+            ]
+        ]);
+    }
+
+
     public function store(Request $request)
     {
         $user = auth('sanctum')->user();
